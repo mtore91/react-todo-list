@@ -75,6 +75,7 @@ function TodoList() {
 //         });
 //       }
     
+<<<<<<< HEAD
 //       render() {
 //         return (
 //             <div className="todo-list">
@@ -88,6 +89,21 @@ function TodoList() {
 //               ))}
 //             </div>
 //           </div>
+=======
+      render() {
+        return (
+            <div className="todo-list">
+            <form onSubmit={this.handleSubmit}>
+              <input type="text" placeholder="Add a todo" onChange={this.handleChange} value={this.state.newTodo} />
+              <button type="submit">Add</button>
+            </form>
+            <div>
+              {this.state.todos.map((todo, index) => (
+                <TodoItem key={index} todo={todo} onRemove={this.handleRemove} index={index} className="todo-item" />
+              ))}
+            </div>
+          </div>
+>>>>>>> d632ce4bc2495a3d6a2781193c46772068b6200c
           
 //         );
 //       }
