@@ -35,7 +35,6 @@ class TodoList extends Component {
       render() {
         return (
             <div className="todo-list">
-                {/* <RecipeSearch /> */}
             <form onSubmit={this.handleSubmit}>
               <input type="text" placeholder="Add a todo" onChange={this.handleChange} value={this.state.newTodo} />
               <button type="submit">Add</button>
