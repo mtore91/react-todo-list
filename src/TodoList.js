@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import TodoItem from './TodoItem';
-
+import Header from './Header'
 
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
+  const [editingTodo, setEditingTodo] = useState({ index: null, value: "" });
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -20,9 +21,26 @@ function TodoList() {
   const handleRemove = index => {
     setTodos(todos.filter((_, i) => i !== index));
   };
+  
+  const handleEdit = (index) => {
+    const newTodos = [...todos];
+    setEditingTodo({ index, value: newTodos[index] });
+  };
+  const handleSave = (event, index) => {
+    event.preventDefault();
+    const newTodos = [...todos];
+    newTodos[editingTodo.index] = editingTodo.value;
+    setTodos(newTodos);
+    setEditingTodo({ index: null, value: "" });
+  };
+  const handleInputChange = (event) => {
+    setEditingTodo({ ...editingTodo, value: event.target.value });
+  };
+
 
   return (
     <div className="todo-list">
+      <Header />
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -32,15 +50,11 @@ function TodoList() {
         />
         <button type="submit">Add</button>
       </form>
+      <h3>Things left to do:</h3>
       <div>
         {todos.map((todo, index) => (
-          <TodoItem
-            key={index}
-            todo={todo}
-            onRemove={handleRemove}
-            index={index}
-            className="todo-item"
-          />
+          <TodoItem key={index} todo={todo} onRemove={handleRemove} onEdit={handleEdit} index={index} editingTodo={editingTodo} handleInputChange={handleInputChange} handleSave={handleSave} className="todo-item" />
+
         ))}
       </div>
     </div>

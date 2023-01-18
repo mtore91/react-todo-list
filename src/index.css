@@ -23,7 +23,8 @@ code {
   background-color: white;
   padding: 10px;
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin: 10px;
+  width:25%;
 }
 
 button{
@@ -31,4 +32,13 @@ button{
   color: red;
   background-color: whitesmoke;
   border-radius: 5px;
+}
+.header {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  background-color: #ddd;
+  color: #333;
+  border-radius:10px;
 }
